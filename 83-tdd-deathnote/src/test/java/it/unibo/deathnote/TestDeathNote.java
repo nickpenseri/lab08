@@ -73,7 +73,7 @@ class TestDeathNote {
     }
 
     @Test
-    public void testDeathCause() {
+    public void testDeathCause() throws InterruptedException{
         try {
             notebook.writeDeathCause("heart attack");
             fail("Should not be able to write death cause before name");
@@ -86,14 +86,13 @@ class TestDeathNote {
         notebook.writeName(OTHER_NAME);
         assertTrue(notebook.writeDeathCause("karting accident"));
         assertEquals("karting accident", notebook.getDeathCause(OTHER_NAME));
-        long initialTime = System.currentTimeMillis();
-        while ((System.currentTimeMillis() - initialTime) < 100) {}
+        Thread.sleep(100);
         notebook.writeDeathCause("heart attack");
         assertEquals("karting accident", notebook.getDeathCause(OTHER_NAME));
     }
 
     @Test
-    public void testDetails() {
+    public void testDetails() throws InterruptedException{
         try {
             notebook.writeDetails ("ran for too long");
             fail("Should not be able to write details before name");
@@ -106,8 +105,7 @@ class TestDeathNote {
         assertTrue(notebook.writeDetails("ran for too long"));
         assertEquals("ran for too long", notebook.getDeathDetails(NAME));
         notebook.writeName(OTHER_NAME);
-        long initialTime = System.currentTimeMillis();
-        while ((System.currentTimeMillis() - initialTime) < 6100) {}
+        Thread.sleep(6100);
         notebook.writeDetails("eaten too much");
         assertEquals("ran for too long", notebook.getDeathDetails(OTHER_NAME));
     }
