@@ -107,6 +107,6 @@ class TestDeathNote {
         notebook.writeName(OTHER_NAME);
         Thread.sleep(6100);
         notebook.writeDetails("eaten too much");
-        assertEquals("ran for too long", notebook.getDeathDetails(OTHER_NAME));
+        assertEquals("", notebook.getDeathDetails(OTHER_NAME));
     }
 }
