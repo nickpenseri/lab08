@@ -16,7 +16,7 @@ public class PersonImpl implements Person{
 
     public PersonImpl(String name) {
         this.name = name;
-        this.deathCause =DEFAULT_DEATH_CAUSE;
+        this.deathCause = DEFAULT_DEATH_CAUSE;
         this.timeWritingName = System.currentTimeMillis();
         this.timeWritingCause = System.currentTimeMillis();
         this.details = "";
@@ -65,5 +65,4 @@ public class PersonImpl implements Person{
     private boolean canWriteDetails () {
         return (System.currentTimeMillis() - this.timeWritingCause) < TIME_TO_WRITE_DETAILS;
     }
-    
 }
